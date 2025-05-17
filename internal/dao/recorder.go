@@ -45,6 +45,7 @@ type Recorder struct {
 	mx     sync.RWMutex
 }
 
+// DialRecorder returns the singleton Recorder instance, initializing it with the provided client connection and a new LRU cache if it does not already exist.
 func DialRecorder(c client.Connection) *Recorder {
 	if MxRecorder != nil {
 		return MxRecorder
@@ -57,6 +58,7 @@ func DialRecorder(c client.Connection) *Recorder {
 	return MxRecorder
 }
 
+// ResetRecorder resets the singleton Recorder instance with a new client connection.
 func ResetRecorder(c client.Connection) {
 	MxRecorder = nil
 	DialRecorder(c)
@@ -272,7 +274,8 @@ func (r *Recorder) recordPodsMetrics(ctx context.Context, ns string) error {
 	return nil
 }
 
-// FetchPods retrieves all pods in a given namespace.
+// FetchPods returns a list of all pods in the specified namespace after verifying authorization.
+// Returns an error if the user is not authorized, if listing fails, or if conversion to typed pods fails.
 func FetchPods(_ context.Context, f Factory, ns string) (*v1.PodList, error) {
 	auth, err := f.Client().CanI(ns, client.PodGVR, "pods", []string{client.ListVerb})
 	if err != nil {

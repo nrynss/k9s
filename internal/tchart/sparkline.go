@@ -29,7 +29,7 @@ type SparkLine struct {
 	colorIndex int
 }
 
-// NewSparkLine returns a new graph.
+// NewSparkLine creates a new SparkLine component with the specified ID and unit.
 func NewSparkLine(id, unit string) *SparkLine {
 	return &SparkLine{
 		Component: NewComponent(id),

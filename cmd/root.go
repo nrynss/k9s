@@ -75,6 +75,8 @@ func Execute() {
 	}
 }
 
+// run initializes configuration, logging, and the main application view, then starts the K9s CLI application.
+// Returns an error if initialization, configuration loading, or application execution fails.
 func run(*cobra.Command, []string) error {
 	if err := config.InitLocs(); err != nil {
 		return err

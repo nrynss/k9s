@@ -24,7 +24,7 @@ type StatusIndicator struct {
 	cancel    context.CancelFunc
 }
 
-// NewStatusIndicator returns a new status indicator.
+// NewStatusIndicator creates and initializes a StatusIndicator for displaying status information in the UI with the specified styles.
 func NewStatusIndicator(app *App, styles *config.Styles) *StatusIndicator {
 	s := StatusIndicator{
 		TextView: tview.NewTextView(),

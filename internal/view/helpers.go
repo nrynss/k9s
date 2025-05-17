@@ -128,6 +128,7 @@ func defaultEnv(c *client.Config, path string, header model1.Header, row *model1
 	return env
 }
 
+// describeResource creates and injects a "Describe" live view for the specified Kubernetes resource. If injection fails, it flashes the error message.
 func describeResource(app *App, _ ui.Tabular, gvr *client.GVR, path string) {
 	v := NewLiveView(app, "Describe", model.NewDescribe(gvr, path))
 	if err := app.inject(v, false); err != nil {
@@ -135,6 +136,7 @@ func describeResource(app *App, _ ui.Tabular, gvr *client.GVR, path string) {
 	}
 }
 
+// showReplicasets creates and injects a ReplicaSet view filtered by label and field selectors, setting the active namespace based on the provided path.
 func showReplicasets(app *App, path string, labelSel labels.Selector, fieldSel string) {
 	v := NewReplicaSet(client.RsGVR)
 	v.SetContextFn(func(ctx context.Context) context.Context {
@@ -152,6 +154,7 @@ func showReplicasets(app *App, path string, labelSel labels.Selector, fieldSel s
 	}
 }
 
+// showPods creates and injects a Pod view filtered by label and field selectors, setting the active namespace based on the provided path.
 func showPods(app *App, path string, labelSel labels.Selector, fieldSel string) {
 	v := NewPod(client.PodGVR)
 	v.SetContextFn(podCtx(app, path, fieldSel))

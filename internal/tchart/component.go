@@ -21,7 +21,7 @@ type Component struct {
 	mx                         sync.RWMutex
 }
 
-// NewComponent returns a new component.
+// NewComponent creates and returns a new Component with the specified ID and default color settings.
 func NewComponent(id string) *Component {
 	return &Component{
 		Box:     tview.NewBox(),

@@ -92,7 +92,7 @@ type Pulse struct {
 	chartGVRs      client.GVRs
 }
 
-// NewPulse returns a new alias view.
+// NewPulse creates a new Pulse view for displaying health and metrics charts for the specified Kubernetes resource.
 func NewPulse(gvr *client.GVR) ResourceViewer {
 	return &Pulse{
 		Grid:           tview.NewGrid(),
