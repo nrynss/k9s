@@ -287,6 +287,7 @@ func newPrompt() Prompt {
 	}
 }
 
+// newCharts returns a Charts struct initialized with default color settings for chart backgrounds, dials, resource types, and focus states.
 func newCharts() Charts {
 	return Charts{
 		BgColor:            "black",
@@ -402,6 +403,7 @@ func newTitle() Title {
 	}
 }
 
+// newInfo returns an Info struct initialized with default colors for section, foreground, CPU, memory, and K9s revision indicators.
 func newInfo() Info {
 	return Info{
 		SectionColor: "white",

@@ -18,6 +18,8 @@ const (
 
 type args map[string]string
 
+// newArgs parses a slice of command-line argument strings into an args map based on command type and argument prefixes.
+// It assigns argument values to specific keys such as topic, filter, fuzzy, label, context, or namespace, depending on their format and the interpreter's mode.
 func newArgs(p *Interpreter, aa []string) args {
 	arguments := make(args, len(aa))
 	if len(aa) == 0 {

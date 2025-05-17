@@ -30,7 +30,7 @@ type Pulse struct {
 	health    *PulseHealth
 }
 
-// NewPulse returns a new pulse.
+// NewPulse creates and returns a new Pulse instance for the specified group-version-resource.
 func NewPulse(gvr *client.GVR) *Pulse {
 	return &Pulse{
 		gvr: gvr,

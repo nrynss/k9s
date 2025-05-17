@@ -152,7 +152,8 @@ func (*Gauge) drawDial(sc tcell.Screen, m Matrix, o image.Point, style tcell.Sty
 }
 
 // ----------------------------------------------------------------------------
-// Helpers...
+// computeDelta returns the change direction between two integer values as a delta.
+// If the new value is zero or unchanged, it returns DeltaSame; if increased, DeltaMore; if decreased, DeltaLess.
 
 func computeDelta(d1, d2 int) delta {
 	if d2 == 0 {
@@ -170,6 +171,7 @@ func computeDelta(d1, d2 int) delta {
 	}
 }
 
+// printDelta draws an up or down arrow at the specified position to indicate an increase or decrease in value.
 func printDelta(sc tcell.Screen, d delta, o image.Point, s tcell.Style) {
 	s = s.Dim(false)
 	switch d {

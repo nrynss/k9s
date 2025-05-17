@@ -128,6 +128,7 @@ func ensurePodPortFwdAllowed(factory dao.Factory, podName string) error {
 	return nil
 }
 
+// runForward starts port forwarding for the specified resource and manages its lifecycle, including error handling and cleanup.
 func runForward(v ResourceViewer, pf watch.Forwarder, f *portforward.PortForwarder) {
 	v.App().factory.AddForwarder(pf)
 

@@ -177,6 +177,9 @@ func pluginActions(r Runner, aa *ui.KeyActions) error {
 	return errs
 }
 
+// pluginAction returns an action handler that executes the specified plugin command for the currently selected item.
+// If the plugin requires confirmation, a dialog is shown before execution. Arguments are processed with environment variable substitution.
+// Errors during execution are reported to the user, except for interrupt signals, which are ignored. Output messages are displayed as appropriate.
 func pluginAction(r Runner, p *config.Plugin) ui.ActionHandler {
 	return func(evt *tcell.EventKey) *tcell.EventKey {
 		path := r.GetSelectedItem()

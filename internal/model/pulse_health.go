@@ -68,7 +68,7 @@ type PulseHealth struct {
 	factory dao.Factory
 }
 
-// NewPulseHealth returns a new instance.
+// NewPulseHealth creates a new PulseHealth instance using the provided DAO factory.
 func NewPulseHealth(f dao.Factory) *PulseHealth {
 	return &PulseHealth{factory: f}
 }
@@ -147,6 +147,7 @@ func (h *PulseHealth) check(ctx context.Context, ns string, gvr *client.GVR) (He
 	return c, nil
 }
 
+// isTable returns true if the slice contains exactly one object and that object is a metav1.Table.
 func isTable(oo []runtime.Object) bool {
 	if len(oo) == 0 || len(oo) > 1 {
 		return false

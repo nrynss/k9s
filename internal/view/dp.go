@@ -97,7 +97,8 @@ func (d *Deploy) getInstance(fqn string) (*appsv1.Deployment, error) {
 }
 
 // ----------------------------------------------------------------------------
-// Helpers...
+// showPodsFromSelector displays pods matching the given label selector for a resource path.
+// If the label selector cannot be converted, an error is flashed to the user.
 
 func showPodsFromSelector(app *App, path string, sel *metav1.LabelSelector) {
 	l, err := metav1.LabelSelectorAsSelector(sel)
@@ -109,6 +110,8 @@ func showPodsFromSelector(app *App, path string, sel *metav1.LabelSelector) {
 	showPods(app, path, l, "")
 }
 
+// showReplicasetsFromSelector displays ReplicaSets matching the given label selector for the specified resource path.
+// If the label selector cannot be converted, an error is flashed to the user.
 func showReplicasetsFromSelector(app *App, path string, sel *metav1.LabelSelector) {
 	l, err := metav1.LabelSelectorAsSelector(sel)
 	if err != nil {

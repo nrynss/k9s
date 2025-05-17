@@ -77,7 +77,7 @@ func (e EndpointSlice) defaultRow(o any, ns string, r *model1.Row) error {
 }
 
 // ----------------------------------------------------------------------------
-// Helpers...
+// toEPss returns a comma-separated string of all addresses from the provided slice of Endpoints, or a sentinel value if the slice is empty.
 
 func toEPss(ee []discoveryv1.Endpoint) string {
 	if len(ee) == 0 {
@@ -92,6 +92,7 @@ func toEPss(ee []discoveryv1.Endpoint) string {
 	return strings.Join(aa, ",")
 }
 
+// toPorts returns a comma-separated string of port numbers from a slice of EndpointPort objects, or a placeholder if the slice is empty.
 func toPorts(ee []discoveryv1.EndpointPort) string {
 	if len(ee) == 0 {
 		return UnsetValue
